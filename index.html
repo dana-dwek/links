@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Private Links</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    #links { display: none; }
+    #login { max-width: 300px; margin: auto; text-align: center; }
+    input[type="password"] { padding: 8px; width: 80%; margin: 10px 0; }
+    button { padding: 8px 16px; }
+  </style>
+</head>
+<body>
+
+<div id="login">
+  <h2>Enter 4-Digit Code</h2>
+  <input type="password" id="codeInput" maxlength="4" placeholder="XXXX">
+  <br>
+  <button onclick="checkCode()">Submit</button>
+  <p id="message" style="color:red;"></p>
+</div>
+
+<div id="links">
+  <h1>Welcome to My Links Page</h1>
+  <ul>
+    <li><a href="https://example.com">Example Link 1</a></li>
+    <li><a href="https://another.com">Example Link 2</a></li>
+    <li><a href="https://yetanother.com">Example Link 3</a></li>
+  </ul>
+</div>
+
+<script>
+  const correctCode = "1234"; // change this to your desired code
+
+  function checkCode() {
+    const input = document.getElementById('codeInput').value;
+    if (input === correctCode) {
+      document.getElementById('login').style.display = 'none';
+      document.getElementById('links').style.display = 'block';
+    } else {
+      document.getElementById('message'
