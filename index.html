@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Protected Links Page</title>
+  <title>Protected Links</title>
   <style>
     body { font-family: Arial, sans-serif; padding: 20px; }
     #links { display: none; }
     #login { max-width: 300px; margin: 100px auto; text-align: center; }
-    input[type="password"] { padding: 8px; width: 80%; margin: 10px 0; font-size: 16px; }
+    input { padding: 8px; width: 80%; margin: 10px 0; font-size: 16px; }
     button { padding: 8px 16px; font-size: 16px; }
-    #message { color: red; margin-top: 10px; }
+    #message { color: red; }
   </style>
 </head>
 <body>
@@ -18,43 +18,29 @@
   <h2>Enter 4-Digit Code</h2>
   <input type="password" id="codeInput" maxlength="4" placeholder="XXXX" />
   <br>
-  <button id="submitBtn">Submit</button>
+  <button onclick="checkCode()">Submit</button>
   <div id="message"></div>
 </div>
 
 <div id="links">
-  <h1>Welcome to My Private Links</h1>
+  <h1>Private Links</h1>
   <ul>
-    <li><a href="https://example.com">Example Link 1</a></li>
-    <li><a href="https://another.com">Example Link 2</a></li>
-    <li><a href="https://yetanother.com">Example Link 3</a></li>
+    <li><a href="https://example.com">Link 1</a></li>
+    <li><a href="https://another.com">Link 2</a></li>
+    <li><a href="https://yetanother.com">Link 3</a></li>
   </ul>
 </div>
 
 <script>
-  const correctCode = "1234"; // <-- change this to your desired code
-  const codeInput = document.getElementById('codeInput');
-  const submitBtn = document.getElementById('submitBtn');
-  const message = document.getElementById('message');
-  const loginDiv = document.getElementById('login');
-  const linksDiv = document.getElementById('links');
-
-  submitBtn.addEventListener('click', () => {
-    if (codeInput.value === correctCode) {
-      loginDiv.style.display = 'none';
-      linksDiv.style.display = 'block';
+  function checkCode() {
+    var input = document.getElementById('codeInput').value;
+    if (input === "1234") {
+      document.getElementById('login').style.display = 'none';
+      document.getElementById('links').style.display = 'block';
     } else {
-      message.textContent = "Incorrect code. Please try again.";
-      codeInput.value = "";
+      document.getElementById('message').textContent = "Incorrect code.";
     }
-  });
-
-  // allow pressing Enter
-  codeInput.addEventListener("keypress", function(event) {
-    if (event.key === "Enter") {
-      submitBtn.click();
-    }
-  });
+  }
 </script>
 
 </body>
